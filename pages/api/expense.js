@@ -6,6 +6,7 @@ export default async function expenseHandler(req, res) {
     var insertedExpense;
     if(req.method==='POST'){
         console.log(req.body)
+        req.body.Amount=parseFloat(req.body.Amount)
         var db=mongoclnt.db();
         insertedExpense= await db.collection(collectionName).insertOne(req.body);
         console.log(insertedExpense);

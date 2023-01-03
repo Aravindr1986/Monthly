@@ -12,10 +12,10 @@ export default function Expense() {
     var bodyData={};
     bodyData.expenseType=event.target.expensetype.value
     bodyData.expenseDate=event.target.edate.value
-    bodyData.amount=event.target.amount.value
+    bodyData.Amount=event.target.amount.value
     bodyData.comments=event.target.comments.value
 
-    const endpoint = '/api/expense' + event.target.username.value
+    const endpoint = '/api/expense'
     const options = {
       method: 'POST',
       headers: {
