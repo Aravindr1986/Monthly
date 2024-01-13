@@ -5,13 +5,9 @@ export default async function categoryHandler(req, res) {
   //var token="";
   if (req.method === "GET") {
     var db = mongoclnt.db();
-    aggregatedExpense = await db
+    expenseCategories = await db
       .collection(collectionName)
-      .aggregate([
-        { $match: { date: { $gte: ISODate("2019-05-01") } } },
-        { $group: { _id: "$expenseType", total: { $sum: "$Amount" } } },
-      ])
       .toArray();
   }
-  res.status(200).json(aggregatedExpense);
+  res.status(200).json(expenseCategories);
 }
