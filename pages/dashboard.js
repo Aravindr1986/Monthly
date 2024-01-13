@@ -11,8 +11,13 @@ export default    function dashboard() {
           <div>         
               
               Welcome to the Monthly App
-          </div> 
+          </div>
+          <br></br> 
+          <div>
+          <table>  <tbody><tr><td><a href="http://localhost:3000/expense">Add an expense</a></td></tr>  </tbody></table>
         </div>
+        </div>
+        
       </main>
     </div>
     )
