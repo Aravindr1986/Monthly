@@ -14,6 +14,7 @@ export default function Expense() {
     bodyData.expenseDate=event.target.edate.value
     bodyData.Amount=event.target.amount.value
     bodyData.comments=event.target.comments.value
+    bodyData.category=event.target.category.value
 
     const endpoint = '/api/expense'
     const options = {
@@ -59,9 +60,14 @@ export default function Expense() {
                             <td><input type="text" id="amount" name="amount"  required /></td>
                           </tr>
                           <tr>
+                            <th>Category: </th>
+                            <td><input type="text" id="category" name="category"  required /></td>
+                          </tr>
+                          <tr>
                             <th>Comments: </th>
                             <td><input type="text" id="comments" name="comments"  required /></td>
                           </tr>
+
                           <tr>
                             <td><center><input type="submit" name="Add"  value="Add" /></center></td>
                           </tr>
