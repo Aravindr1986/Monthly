@@ -3,15 +3,20 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 const inter = Inter({ subsets: ['latin'] })
-
+import DatePicker from 'react-datepicker';
 export default function Expense() {
   const router = useRouter()
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const handleSubmit = async (event) => {
     event.preventDefault();
     var bodyData={};
     bodyData.expenseType=event.target.expensetype.value
-    bodyData.expenseDate=event.target.edate.value
+    bodyData.expenseDate=selectedDate//event.target.edate.value
     bodyData.Amount=event.target.amount.value
     bodyData.comments=event.target.comments.value
     bodyData.category=event.target.category.value
@@ -33,6 +38,21 @@ export default function Expense() {
       router.push("./dashboard")
     }
   };
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/category');
+        setData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  },[])
  
   return (
     <div>
@@ -49,11 +69,13 @@ export default function Expense() {
                     <tbody>
                           <tr>
                             <th>Expense Type :</th>
-                            <th><input type="text" id="expensetyoe" name="expensetype"  required /></th>
+                            <th><input type="text" id="expensetype" name="expensetype"  required /></th>
                           </tr>
                           <tr>
                             <th>Expense Date: </th>
-                            <td><input type="text" id="edate" name="edate"  required /></td>
+                            <td><DatePicker       selected={selectedDate}  onChange={(date) => setSelectedDate(date)}
+                              dateFormat="yyyy-MM-dd"    placeholderText=""
+                              required     /></td>
                           </tr>
                           <tr>
                             <th>Amount: </th>
