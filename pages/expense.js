@@ -10,6 +10,7 @@ import DatePicker from 'react-datepicker';
 export default function Expense() {
   const router = useRouter()
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedExpenseType, setSelectedExpenseType] = useState('');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const handleSubmit = async (event) => {
@@ -42,7 +43,7 @@ export default function Expense() {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/category');
+        const response = await axios.get('http://localhost:3000/api/category');
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -69,7 +70,23 @@ export default function Expense() {
                     <tbody>
                           <tr>
                             <th>Expense Type :</th>
-                            <th><input type="text" id="expensetype" name="expensetype"  required /></th>
+                            <td>
+                      <select
+                        id="expensetype"
+                        name="expensetype"
+                        onChange={(e) => setSelectedExpenseType(e.target.value)}
+                        value={selectedExpenseType}
+                        required
+                      >
+                        <option value="" disabled>Select an Expense Type</option>
+                        {data.map((expenseType) => (
+
+                          <option key={expenseType.Name} value={expenseType.Name}>
+                            {expenseType.Name}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
                           </tr>
                           <tr>
                             <th>Expense Date: </th>

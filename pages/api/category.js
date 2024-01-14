@@ -7,10 +7,10 @@ export default async function categoryHandler(req, res) {
   var expenseCategories=[]
   if (req.method === "GET") {
     var db = mongoclnt.db('BUDGET-DB');
+    const projection={"Name":1}
     expenseCategories = await db
-      .collection(collectionName).find({})
+      .collection(collectionName).find({},projection)
       .toArray();
   }
-  console.log(expenseCategories)
   res.status(200).json(expenseCategories);
 }
