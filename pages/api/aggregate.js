@@ -5,15 +5,16 @@ export default async function aggregateHandler(req, res) {
   //var token="";
   var aggregatedExpense;
   if (req.method === "GET") {
-    var db = mongoclnt.db();
+    var db = mongoclnt.db("BUDGET-DB");
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    console.log(firstDay+" "+lastDay);
     aggregatedExpense = await db
       .collection(collectionName)
       .aggregate([
-        { $match: { date: { $gte: ISODate("2019-05-01") } } },
+          { $match: { expenseDate: { $gte: firstDay ,
+                                    $lte:lastDay  } 
+        } },
         { $group: { _id: "$expenseType", total: { $sum: "$Amount" } } },
       ])
       .toArray();

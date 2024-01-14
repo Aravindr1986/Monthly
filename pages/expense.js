@@ -17,7 +17,7 @@ export default function Expense() {
     event.preventDefault();
     var bodyData={};
     bodyData.expenseType=event.target.expensetype.value
-    bodyData.expenseDate=selectedDate//event.target.edate.value
+    bodyData.expenseDate=selectedDate
     bodyData.Amount=event.target.amount.value
     bodyData.comments=event.target.comments.value
     bodyData.category=event.target.category.value
