@@ -20,7 +20,6 @@ export default function Expense() {
     bodyData.expenseDate=selectedDate
     bodyData.Amount=event.target.amount.value
     bodyData.comments=event.target.comments.value
-    bodyData.category=event.target.category.value
 
     const endpoint = '/api/expense'
     const options = {
@@ -36,7 +35,8 @@ export default function Expense() {
     let data = await response.json()
     console.log(data)
     if(response.status==200){
-      router.push("./dashboard")
+      router.reload()
+      //router.push("./dashboard")
     }
   };
   useEffect(() => {
@@ -97,10 +97,6 @@ export default function Expense() {
                           <tr>
                             <th>Amount: </th>
                             <td><input type="text" id="amount" name="amount"  required /></td>
-                          </tr>
-                          <tr>
-                            <th>Category: </th>
-                            <td><input type="text" id="category" name="category"  required /></td>
                           </tr>
                           <tr>
                             <th>Comments: </th>
