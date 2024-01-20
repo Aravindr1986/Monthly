@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
+import Cookies from 'js-cookie';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -14,13 +16,24 @@ export default function Home() {
     const options = {
       method: 'GET',
     }
-    // Get verification that the user email id is valid and registered.
-    const response = await fetch(endpoint, options)
-    let data = await response.json()
-    console.log(data)
-    if(response.status==200){
-      router.push("./dashboard")
-    }
+    try{
+
+              // Get verification that the user email id is valid and registered.
+              const response = await fetch(endpoint, options)
+              let data = await response.json()
+              console.log(data)
+              Cookies.set('token', data.token);
+        
+              if(response.status==200){
+                router.push("./dashboard")
+              } else {
+                setError('Invalid credentials'); 
+              }
+      
+            }catch (error) {
+              console.error('Error during login:', error);
+              setError('An error occurred during login');
+            }
    
   };
  
