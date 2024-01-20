@@ -22,11 +22,14 @@ export default function Expense() {
     bodyData.expenseDate=selectedDate
     bodyData.Amount=event.target.amount.value
     bodyData.comments=event.target.comments.value
+    const token=Cookies.get('token')
+    console.log(token)
 
     const endpoint = '/api/expense'
     const options = {
       method: 'POST',
       headers: {
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(bodyData),
@@ -51,7 +54,7 @@ export default function Expense() {
           Authorization: `Bearer ${token}`,
           // Add any other headers if needed
         };
-        const response = await axios.get('http://localhost:3000/api/category');
+        const response = await axios.get('http://localhost:3000/api/category',{headers});
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

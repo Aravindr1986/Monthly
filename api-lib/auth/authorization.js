@@ -2,7 +2,7 @@
 function validateToken(token) {
 
     if (!token) {
-        return res.status(401).json({ error: 'Unauthorized - Missing token' });
+        return false
       }
     //write validate logic
     return true; 
