@@ -31,7 +31,7 @@ export default   function  Aggregate({data}) {
     </div>
   )
 }
-export async function getServerSideProps() {
+export async function getServerSideProps() {  //Why are you doing this like this?????
   const res = await fetch(`http://localhost:3000/api/aggregate`)
   var body=await res.json()
   return { props: { data:body} }
