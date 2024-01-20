@@ -6,13 +6,9 @@ export default async function expenseHandler(req, res) {
 
 const token = req.headers.authorization;
 
-  if (!token) {
-    return res.status(401).json({ error: 'Unauthorized - Missing token' });
-  }
-
-  // Validate the token using the function from the auth module
+     // Validate the token using the function from the auth module
     if (!validateToken(token)) {
-        return res.status(401).json({ error: 'Unauthorized - Invalid token' });
+        return res.status(401).json({ error: 'Unauthorized - Missing or Invalid token' });
     }
    
     var mongoclnt=await mongoClient
