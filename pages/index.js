@@ -22,7 +22,7 @@ export default function Home() {
               const response = await fetch(endpoint, options)
               let data = await response.json()
               console.log(data)
-              Cookies.set('token', data.token);
+              Cookies.set('token', data.Token);
         
               if(response.status==200){
                 router.push("./dashboard")
