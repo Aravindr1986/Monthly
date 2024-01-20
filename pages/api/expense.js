@@ -1,6 +1,5 @@
-import react from 'react';
 import mongoClient from'../../api-lib/db/mongodb'
-import validateToken from'../../api-lib/auth/auth'
+import validateToken from'../../api-lib/auth/authorization'
 
 export default async function expenseHandler(req, res) {
 

@@ -9,7 +9,4 @@ function validateToken(token) {
     
   }
   
-  export default {
-    validateToken,
-  };
-  
+  export default validateToken  

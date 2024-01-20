@@ -5,8 +5,10 @@ import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 const inter = Inter({ subsets: ['latin'] })
 import DatePicker from 'react-datepicker';
+
 export default function Expense() {
   const router = useRouter()
   const [selectedDate, setSelectedDate] = useState(null);
@@ -40,9 +42,15 @@ export default function Expense() {
     }
   };
   useEffect(() => {
+    const token=Cookies.get('token')
+    console.log(token)
 
     const fetchData = async () => {
       try {
+        const headers = {
+          Authorization: `Bearer ${token}`,
+          // Add any other headers if needed
+        };
         const response = await axios.get('http://localhost:3000/api/category');
         setData(response.data);
       } catch (error) {
