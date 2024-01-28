@@ -17,10 +17,9 @@ const token = req.headers.authorization;
         console.log(req.body)
         req.body.Amount=parseFloat(req.body.Amount)
         req.body.expenseDate=new Date(req.body.expenseDate);
+        req.body.createdDate=new Date();    //adding created date
         var db=mongoclnt.db('BUDGET-DB');
-        insertedExpense= await db.collection(collectionName).insertOne(req.body);
-        console.log(insertedExpense);
-       
+        insertedExpense= await db.collection(collectionName).insertOne(req.body);       
     }
     res.status(200).json(insertedExpense)
   }

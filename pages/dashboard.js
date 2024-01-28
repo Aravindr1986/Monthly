@@ -14,7 +14,12 @@ export default    function dashboard() {
           </div>
           <br></br> 
           <div>
-          <table>  <tbody><tr><td><a href="http://localhost:3000/expense">Add an expense</a></td></tr>  </tbody></table>
+          <table>  
+            <tbody>
+              <tr><td><a href="http://localhost:3000/expense">Add an expense</a></td></tr>
+              <tr><td><a href="http://localhost:3000/aggregate">View monthly summary</a></td></tr>
+            </tbody>
+          </table>
         </div>
         </div>
         

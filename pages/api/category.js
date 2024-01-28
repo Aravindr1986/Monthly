@@ -8,8 +8,6 @@ export default async function categoryHandler(req, res) {
 }
   var mongoclnt = await mongoClient;
   const collectionName = "Category";
-  //var token="";'
-  console.log(req.method)
   var expenseCategories=[]
   if (req.method === "GET") {
     var db = mongoclnt.db('BUDGET-DB');

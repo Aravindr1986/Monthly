@@ -1,10 +1,10 @@
 import mongoClient from "../../api-lib/db/mongodb";
 import validateToken from'../../api-lib/auth/authorization'
 export default async function aggregateHandler(req, res) {
-  const token = req.headers.authorization;
+ /* const token = req.headers.authorization;
   if (!validateToken(token)) {
     return res.status(401).json({ error: 'Unauthorized - Missing or Invalid token' });
-}
+}*/
   var mongoclnt = await mongoClient;
   const collectionName = "expense";
   var aggregatedExpense;
