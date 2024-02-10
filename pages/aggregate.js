@@ -14,9 +14,9 @@ export default   function  Aggregate({data}) {
       </Head>
       <main className={styles.main}>
        <div className={styles.description}>
-    
+      
     <div >
-  
+    <h1>Summary of expenses</h1><br></br>
       <table border="1px">
       <tbody>
         <tr><th>Item</th><th>Total</th></tr>
