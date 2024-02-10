@@ -19,6 +19,7 @@ export default   function  Aggregate({data}) {
   
       <table border="1px">
       <tbody>
+        <tr><th>Item</th><th>Total</th></tr>
       {data.map((totals) => {
             return (
           <tr key={totals._id}><td>{totals._id}</td><td>{totals.total}</td></tr>
