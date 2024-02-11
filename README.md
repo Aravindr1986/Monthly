@@ -1,11 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a monthly budget tracking app that is created using Next js
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
+docker run db
 # or
 yarn dev
 ```
