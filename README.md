@@ -11,8 +11,8 @@ yarn dev
 ```
 To run the app using docker container
 ```bash
-docker build -t my-nextjs-app ./app
-docker run -p 3000:3000 my-nextjs-app
+docker build -t monthly-app .
+docker run -p 3000:3000 monthly-app
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

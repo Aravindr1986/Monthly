@@ -5,13 +5,13 @@ FROM node:16-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-COPY package.json package-lock.json ./
+COPY ./app/package.json ./app/package-lock.json ./
 
 # Install dependencies
 RUN npm install --production
 
 # Copy the rest of the application code
-COPY . .
+COPY ./app .
 
 # Build the Next.js application
 RUN npm run build
