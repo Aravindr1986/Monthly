@@ -13,16 +13,16 @@ export default function dashboard() {
           <div>Welcome to the Monthly App</div>
           <br />
           <div>
-            <table>
+            <table className={styles.tab1}>
               <tbody>
                 <tr>
                   <td>
-                    <a href="http://localhost:3000/expense">Add an expense</a>
+                    <a className={styles.links} href="http://localhost:3000/expense">Add an expense</a>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="http://localhost:3000/aggregate">View monthly summary</a>
+                    <a className={styles.links}  href="http://localhost:3000/aggregate">View monthly summary</a>
                   </td>
                 </tr>
               </tbody>
