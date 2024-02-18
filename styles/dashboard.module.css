@@ -1,14 +1,19 @@
-
+/* Home.module.css */
 .main {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #007bff;
   }
   
   .description {
     text-align: center;
   }
+  
+
+
+  
   a {
     text-decoration: none;
     color: #333;
