@@ -38,4 +38,37 @@
   .form-table input[type="submit"]:hover {
     background-color: #0056b3;
   }
+  .react-datepicker-popper {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+  }
   
+  .react-datepicker-wrapper,
+  .react-datepicker__input-container {
+    position: relative;
+  }
+  
+  .react-datepicker {
+    font-family: inherit;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .react-datepicker__triangle {
+    border-bottom-color: #ccc;
+  }
+  
+  .react-datepicker__day--selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .react-datepicker__day--selected:hover {
+    background-color: #0056b3;
+  }
+  
+  .react-datepicker__day--keyboard-selected {
+    background-color: #007bff;
+    color: white;
+  }  
