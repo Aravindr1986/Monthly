@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import DatePicker from 'react-datepicker';
-import styles from '../styles/dashboard.module.css';
+import styles from '../styles/Home.module.css';
 
 export default function Expense() {
   const [selectedDate, setSelectedDate] = useState(null);
