@@ -9,6 +9,9 @@ docker run db
 # or
 yarn dev
 ```
+To run the app using docker container
+```bash
+docker build -t my-nextjs-app .
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
