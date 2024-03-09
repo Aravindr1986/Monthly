@@ -6,15 +6,16 @@ import Head from 'next/head';
 const inter = Inter({ subsets: ['latin'] });
 
 
-export default   function  Aggregate({data}) {
+export default   function  Aggregate({initialData}) {
   const router = useRouter()
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [data, setData] = useState(initialData);
   const fetchData = async () => {
     const res = await fetch(`http://localhost:3000/api/aggregate?startDate=${startDate}&endDate=${endDate}`);
-    const data = await res.json();
+    const resdata = await res.json();
     // Update the component's state with the fetched data
-    setData(data);
+    setData(resdata);
   };
 
   return (
@@ -56,6 +57,6 @@ export async function getServerSideProps() {  //Why are you doing this like this
   const res = await fetch(`http://localhost:3000/api/aggregate`)
   var body=await res.json()
   console.log(body)
-  return { props: { data:body} }
+  return { props: { initialData:body} }
     
   }
