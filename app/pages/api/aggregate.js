@@ -9,6 +9,7 @@ export default async function aggregateHandler(req, res) {
   const collectionName = "expense";
   var aggregatedExpense;
   if (req.method === "GET") {
+    const { startDate, endDate } = req.query;
     var db = mongoclnt.db("BUDGET-DB");
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -16,8 +17,8 @@ export default async function aggregateHandler(req, res) {
     aggregatedExpense = await db
       .collection(collectionName)
       .aggregate([
-          { $match: { expenseDate: { $gte: firstDay ,
-                                    $lte:lastDay  } 
+          { $match: { expenseDate: { $gte: startDate,//firstDay ,
+                                    $lte:endDate}//lastDay  } 
         } },
         { $group: { _id: "$expenseType", total: { $sum: "$Amount" } } },
       ])
