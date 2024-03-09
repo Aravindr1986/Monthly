@@ -4,13 +4,14 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import DatePicker from 'react-datepicker';
 import styles from '../styles/Home.module.css';
+import { useRouter } from 'next/router'; // Import the useRouter hook
 
 export default function Expense() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedExpenseType, setSelectedExpenseType] = useState('');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const router = useRouter(); // Get the router object
   const handleSubmit = async (event) => {
     event.preventDefault();
     var bodyData = {};
