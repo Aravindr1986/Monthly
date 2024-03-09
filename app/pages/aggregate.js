@@ -8,8 +8,13 @@ export default   function  Aggregate({data}) {
   const router = useRouter()
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const fetchData = async () => {
+    const res = await fetch(`http://localhost:3000/api/aggregate?startDate=${startDate}&endDate=${endDate}`);
+    const data = await res.json();
+    // Update the component's state with the fetched data
+    setData(data);
+  };
 
-  
   return (
     <div>
       <Head>
@@ -20,6 +25,16 @@ export default   function  Aggregate({data}) {
       
     <div >
     <h1>Summary of expenses</h1><br></br>
+    <div>
+              <label htmlFor="startDate">Start Date:</label>
+              <input type="date" id="startDate" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+            </div>
+            <div>
+              <label htmlFor="endDate">End Date:</label>
+              <input type="date" id="endDate" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+            </div>
+            <button onClick={fetchData}>Fetch Data</button>
+            <br />
       <table border="1px">
       <tbody>
         <tr><th>Item</th><th>Total</th></tr>
