@@ -6,6 +6,9 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default   function  Aggregate({data}) {
   const router = useRouter()
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
   
   return (
     <div>
