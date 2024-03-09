@@ -1,8 +1,10 @@
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
-import { useRouter } from 'next/router'
-import Head from 'next/head'
-const inter = Inter({ subsets: ['latin'] })
+import { useState } from 'react';
+import { Inter } from '@next/font/google';
+import styles from '../styles/Home.module.css';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+const inter = Inter({ subsets: ['latin'] });
+
 
 export default   function  Aggregate({data}) {
   const router = useRouter()
@@ -53,6 +55,7 @@ export default   function  Aggregate({data}) {
 export async function getServerSideProps() {  //Why are you doing this like this?????
   const res = await fetch(`http://localhost:3000/api/aggregate`)
   var body=await res.json()
+  console.log(body)
   return { props: { data:body} }
     
   }
