@@ -11,13 +11,20 @@ export default async function aggregateHandler(req, res) {
   if (req.method === "GET") {
     var { startDate, endDate } = req.query;
     console.log(startDate)
+    console.log(typeof startDate)
     var db = mongoclnt.db("BUDGET-DB");
     var date = new Date();
     if (!startDate) {
       startDate = new Date(date.getFullYear(), date.getMonth(), 1);
+    }else
+    {
+      startDate = new Date(startDate);
     }
     if (!endDate) {
       endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    }else
+    {
+      endDate = new Date(endDate);
     }
     aggregatedExpense = await db
       .collection(collectionName)
@@ -29,5 +36,6 @@ export default async function aggregateHandler(req, res) {
       ])
       .toArray();
   }
+  console.log(aggregatedExpense)
   res.status(200).json(aggregatedExpense);
 }
