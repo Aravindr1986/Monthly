@@ -1,8 +1,23 @@
 // dashboard.js
 import Head from 'next/head';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import Expense from './expense'; // Import the Expense component
+import Aggregate from './aggregate'; // Import the Aggregate component
 import styles from '../styles/dashboard.module.css';
 
-export default function dashboard() {
+export default function Dashboard() {
+  const [showComponent, setShowComponent] = useState(null);
+  const router = useRouter();
+
+  const handleClick = (component) => {
+    setShowComponent(component);
+  };
+
+  const navigate = (path) => {
+    router.push(path);
+  };
+
   return (
     <div>
       <Head>
@@ -17,18 +32,23 @@ export default function dashboard() {
               <tbody>
                 <tr>
                   <td>
-                    <a className={styles.links} href="http://localhost:3000/expense">Add an expense</a>
+                    {/* Handle navigation programmatically */}
+                    <a className={styles.links} onClick={() => { handleClick('expense'); navigate('/expense'); }}>Add an expense</a>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a className={styles.links}  href="http://localhost:3000/aggregate">View monthly summary</a>
+                    {/* Handle navigation programmatically */}
+                    <a className={styles.links} onClick={() => { handleClick('aggregate'); navigate('/aggregate'); }}>View monthly summary</a>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
+        {/* Conditionally render the component based on state */}
+        {showComponent === 'expense' && <Expense />}
+        {showComponent === 'aggregate' && <Aggregate />}
       </main>
     </div>
   );
