@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Expense from './expense'; // Import the Expense component
+import Expense from './components/expense'; // Import the Expense component
 import Aggregate from './components/aggregate'; // Import the Aggregate component
 import styles from '../styles/dashboard.module.css';
 
