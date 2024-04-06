@@ -1,0 +1,4 @@
+Need convert the pages to components
+Need to add monthly expense graph
+Need CICD pipline
+need hosting in azure
