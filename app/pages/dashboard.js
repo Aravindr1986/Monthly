@@ -8,14 +8,9 @@ import styles from '../styles/dashboard.module.css';
 
 export default function Dashboard() {
   const [showComponent, setShowComponent] = useState(null);
-  const router = useRouter();
 
   const handleClick = (component) => {
     setShowComponent(component);
-  };
-
-  const navigate = (path) => {
-    router.push(path);
   };
 
   return (
@@ -27,23 +22,13 @@ export default function Dashboard() {
         <div className={styles.description}>
           <div>Welcome to the Monthly App</div>
           <br />
-          <div>
-            <table className={styles.tab1}>
-              <tbody>
-                <tr>
-                  <td>
-                    {/* Handle navigation programmatically */}
-                    <a className={styles.links} onClick={() => { handleClick('expense'); navigate('/components/expense'); }}>Add an expense</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    {/* Handle navigation programmatically */}
-                    <a className={styles.links} onClick={() => { handleClick('aggregate'); navigate('/components/aggregate'); }}>View monthly summary</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div className={styles.tilesContainer}>
+            <div className={styles.tile} onClick={() => { handleClick('expense'); }}>
+              <a className={styles.links}>Add an expense</a>
+            </div>
+            <div className={styles.tile} onClick={() => { handleClick('aggregate'); }}>
+              <a className={styles.links}>View monthly summary</a>
+            </div>
           </div>
         </div>
         {/* Conditionally render the component based on state */}
