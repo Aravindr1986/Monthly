@@ -43,7 +43,7 @@ export default function Expense() {
 
   useEffect(() => {
     const token = Cookies.get('token');
-
+    console.log(token)
     const fetchData = async () => {
       try {
         const headers = {

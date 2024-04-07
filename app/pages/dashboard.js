@@ -33,13 +33,13 @@ export default function Dashboard() {
                 <tr>
                   <td>
                     {/* Handle navigation programmatically */}
-                    <a className={styles.links} onClick={() => { handleClick('expense'); navigate('/expense'); }}>Add an expense</a>
+                    <a className={styles.links} onClick={() => { handleClick('expense'); navigate('/components/expense'); }}>Add an expense</a>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     {/* Handle navigation programmatically */}
-                    <a className={styles.links} onClick={() => { handleClick('aggregate'); navigate('/aggregate'); }}>View monthly summary</a>
+                    <a className={styles.links} onClick={() => { handleClick('aggregate'); navigate('/components/aggregate'); }}>View monthly summary</a>
                   </td>
                 </tr>
               </tbody>
