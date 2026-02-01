@@ -26,7 +26,11 @@ export default function Aggregate({ initialData }) {
   const fetchData = async () => {
     setErrorMessage('');
     try {
-      const res = await fetch(`http://localhost:3000/api/aggregate?startDate`);
+      const params = new URLSearchParams();
+      if (startDate) params.set('startDate', startDate);
+      if (endDate) params.set('endDate', endDate);
+      const query = params.toString();
+      const res = await fetch(`http://localhost:3000/api/aggregate${query ? `?${query}` : ''}`);
       const resdata = await res.json();
       if (!res.ok) {
         setErrorMessage(resdata?.error || 'Failed to load summary.');

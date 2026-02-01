@@ -5,7 +5,7 @@ export default async function expenseHandler(req, res) {
 
 const token = req.headers.authorization;
 
-     // Validate the token using the function from the auth module
+     
     if (!validateToken(token)) {
         return res.status(401).json({ error: 'Unauthorized - Missing or Invalid token' });
     }
